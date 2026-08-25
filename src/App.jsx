@@ -224,6 +224,9 @@ export default function App() {
 
       <footer className="foot">
         <p>{COUNT} cheeses in the book. Pairings follow Decanter, Wine Enthusiast and French fromagerie practice.</p>
+        <p>
+          <a href="/contact.html">Cheese or wine suggestion? Get in touch →</a>
+        </p>
       </footer>
     </div>
   );

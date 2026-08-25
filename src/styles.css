@@ -453,6 +453,21 @@ input:focus-visible {
   margin: 0;
 }
 
+.foot p + p {
+  margin-top: 10px;
+}
+
+.foot a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+}
+
+.foot a:hover {
+  opacity: 0.8;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
