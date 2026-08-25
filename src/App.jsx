@@ -37,6 +37,7 @@ function Glass({ color }) {
 export default function App() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState(null);
+  const [openAlso, setOpenAlso] = useState(() => new Set());
   const inputRef = useRef(null);
 
   const suggestions = useMemo(() => (result ? [] : suggest(query)), [query, result]);
@@ -45,6 +46,7 @@ export default function App() {
     if (!next) return;
     setResult(next);
     setQuery(next.entry.name);
+    setOpenAlso(new Set());
     if (inputRef.current) inputRef.current.blur();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -57,7 +59,17 @@ export default function App() {
   function reset() {
     setResult(null);
     setQuery("");
+    setOpenAlso(new Set());
     if (inputRef.current) inputRef.current.focus();
+  }
+
+  function toggleAlso(i) {
+    setOpenAlso((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
   }
 
   const entry = result ? result.entry : null;
@@ -159,11 +171,35 @@ export default function App() {
 
           <section className="block">
             <h3>Also good</h3>
-            {entry.also.map(([wine, note], i) => (
-              <p key={i}>
-                <strong>{wine}</strong> — {note}
-              </p>
-            ))}
+            {entry.also.map(([wine, note], i) => {
+              const open = openAlso.has(i);
+              return (
+                <div className="also-item" key={i}>
+                  <div className="also-row">
+                    <strong>{wine}</strong>
+                    <button className="toggle" onClick={() => toggleAlso(i)} aria-expanded={open}>
+                      More about this wine
+                      <span className="chevron" aria-hidden="true">
+                        {open ? "−" : "+"}
+                      </span>
+                    </button>
+                  </div>
+                  {open && (
+                    <div className="also-detail">
+                      <p>{note}</p>
+                      <a
+                        className="find find-small"
+                        href={`https://www.wine-searcher.com/find/${encodeURIComponent(wine)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Find it near you →
+                      </a>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </section>
 
           <section className="block warn">
