@@ -290,6 +290,23 @@ input:focus-visible {
   margin: 8px 0 0;
 }
 
+.find {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+}
+
+.find:hover {
+  opacity: 0.8;
+}
+
 .rule {
   display: inline-block;
   font-family: var(--mono);

@@ -143,6 +143,14 @@ export default function App() {
               <p className="pour-label">Pour this</p>
               <h2 className="wine">{entry.wine}</h2>
               <p className="style">{entry.style}</p>
+              <a
+                className="find"
+                href={`https://www.wine-searcher.com/find/${encodeURIComponent(entry.wine)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Find it near you →
+              </a>
             </div>
           </div>
 
