@@ -231,6 +231,15 @@ input:focus-visible {
   font-size: 9.5px;
 }
 
+.tasting {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: var(--dim);
+  margin: 14px 0 0;
+}
+
 .pairing {
   display: flex;
   align-items: center;

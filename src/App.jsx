@@ -135,6 +135,8 @@ export default function App() {
             )}
           </p>
 
+          {entry.tasting && <p className="tasting">{entry.tasting}</p>}
+
           <div className="pairing">
             <Glass color={entry.color} />
             <div>
