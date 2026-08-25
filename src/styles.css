@@ -1,0 +1,384 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --lees: #160d11;
+  --slab: #20141a;
+  --line: #3b2530;
+  --chalk: #f2ede4;
+  --dim: #a38e97;
+  --mute: #7a626c;
+  --gold: #c9a227;
+  --warn: #c4736a;
+  --serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--lees);
+}
+
+body {
+  color: var(--chalk);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.app {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 26px 20px 40px;
+  min-height: 100vh;
+}
+
+/* masthead */
+.head {
+  margin-bottom: 24px;
+}
+
+.mark {
+  font-family: var(--serif);
+  font-size: 40px;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.mark span {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.tagline {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 10px 0 0;
+}
+
+/* search */
+.field {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: var(--slab);
+}
+
+.field input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  color: var(--chalk);
+  font-family: var(--sans);
+  font-size: 16px;
+  padding: 15px 14px;
+}
+
+.field input::placeholder {
+  color: var(--mute);
+}
+
+.field button {
+  background: var(--gold);
+  border: 0;
+  color: #1a1204;
+  padding: 0 22px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.field button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.suggest {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-top: 0;
+}
+
+.suggest button {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: var(--slab);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+  font-size: 15px;
+}
+
+.suggest li:last-child button {
+  border-bottom: 0;
+}
+
+.suggest button:hover {
+  color: var(--gold);
+}
+
+.suggest em {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  white-space: nowrap;
+}
+
+/* intro */
+.intro {
+  margin-top: 30px;
+}
+
+.lede {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.35;
+  margin: 0 0 24px;
+}
+
+.rules {
+  margin: 0;
+}
+
+.rules > div {
+  border-top: 1px solid var(--line);
+  padding: 13px 0;
+}
+
+.rules dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.rules dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--dim);
+}
+
+.link {
+  background: transparent;
+  border: 0;
+  padding: 0 0 2px;
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold);
+}
+
+/* result */
+.result {
+  margin-top: 30px;
+}
+
+.cheese {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cheese span {
+  display: block;
+  margin-top: 7px;
+  color: var(--mute);
+  letter-spacing: 0.11em;
+  font-size: 9.5px;
+}
+
+.pairing {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 0 4px;
+}
+
+.glass {
+  width: 74px;
+  flex: 0 0 74px;
+  color: var(--line);
+}
+
+.pour {
+  animation: fill 900ms cubic-bezier(0.3, 0.8, 0.35, 1) both;
+}
+
+@keyframes fill {
+  from {
+    transform: translateY(38px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.pour-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0;
+}
+
+.wine {
+  font-family: var(--serif);
+  font-size: 38px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  margin: 8px 0 0;
+}
+
+.style {
+  font-size: 13.5px;
+  color: var(--dim);
+  margin: 8px 0 0;
+}
+
+.rule {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 5px 10px;
+  margin: 22px 0 0;
+}
+
+.why {
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+
+.block {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.block h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+
+.block p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0 0 10px;
+  color: var(--dim);
+}
+
+.block p:last-child {
+  margin-bottom: 0;
+}
+
+.block strong {
+  color: var(--chalk);
+  font-weight: 600;
+}
+
+.warn {
+  border-top-color: var(--warn);
+}
+
+.warn h3 {
+  color: var(--warn);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips button {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.chips button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.foot {
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.foot p {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
