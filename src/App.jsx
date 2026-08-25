@@ -12,6 +12,10 @@ const RULES = [
 /* The glass. The bowl fills with the wine's actual colour. */
 const BOWL = "M 16 12 L 84 12 L 84 40 C 84 66 70 80 50 80 C 30 80 16 66 16 40 Z";
 
+function findUrl(wine) {
+  return `https://www.google.com/search?q=${encodeURIComponent(`${wine} wine near me`)}`;
+}
+
 function Glass({ color }) {
   const uid = useMemo(() => `g${Math.random().toString(36).slice(2, 8)}`, []);
   return (
@@ -155,12 +159,7 @@ export default function App() {
               <p className="pour-label">Pour this</p>
               <h2 className="wine">{entry.wine}</h2>
               <p className="style">{entry.style}</p>
-              <a
-                className="find"
-                href={`https://www.wine-searcher.com/find/${encodeURIComponent(entry.wine)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="find" href={findUrl(entry.wine)} target="_blank" rel="noopener noreferrer">
                 Find it near you →
               </a>
             </div>
@@ -187,12 +186,7 @@ export default function App() {
                   {open && (
                     <div className="also-detail">
                       <p>{note}</p>
-                      <a
-                        className="find find-small"
-                        href={`https://www.wine-searcher.com/find/${encodeURIComponent(wine)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a className="find find-small" href={findUrl(wine)} target="_blank" rel="noopener noreferrer">
                         Find it near you →
                       </a>
                     </div>
